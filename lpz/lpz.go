@@ -1,7 +1,6 @@
 package lpz
 
 import (
-	"bufio"
 	"fmt"
 	"information_theory_assignment2/fileio"
 	"io"
@@ -23,20 +22,20 @@ func Compress(r io.Reader, w io.Writer, fileSize int64) {
 
 	writeGammaCode(w, fileSize)
 
-
 	pr, pw := io.Pipe()
 	go func() {
-		defer pw.Close()
-		fileio.CompleteRead(r, pw)
+		fileio.SimpleRead(r, pw)
+		_ = pw.Close()
 	}()
 
-	rb := bufio.NewReader(pr)
 	for {
-		b, err := rb.ReadByte()
+
+		var curByte byte
+		_, err := fmt.Fscan(pr, &curByte)
 		if err != nil {
 			break
 		}
-		fmt.Println(b)
 
 	}
+
 }
