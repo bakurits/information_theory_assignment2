@@ -17,6 +17,7 @@ func SimpleRead(r io.Reader, w io.Writer) {
 		return
 	}
 	for _, value := range data {
+		fmt.Println(value)
 		_, err := fmt.Fprintf(w, "%08s", strconv.FormatInt(int64(value), 2))
 		if err != nil {
 			log.Fatalf("error occurred during writting %s", err)

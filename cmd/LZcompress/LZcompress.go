@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	inp := "/home/bakurits/go/src/information_theory_assignment2/public_tests/A/003.dat"
+	inp := "/home/bakurits/go/src/information_theory_assignment2/public_tests/A/001.dat"
 	outp := "/home/bakurits/go/src/information_theory_assignment2/public_tests/A/003.mans"
 	inpf, err := os.Open(inp)
 	if err != nil {
